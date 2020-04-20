@@ -3,11 +3,33 @@ import { ApolloServer, gql } from 'apollo-server';
 import { ApolloServer as ApolloServerLambda } from 'apollo-server-lambda';
 import * as EnvironmentVariables from 'dotenv';
 import * as BrowserStack from 'browserstack';
-import * as fs from 'fs';
 
 EnvironmentVariables.config({
   path: '.env'
 });
+
+const typeDefs = gql`
+  type Query {
+    browsers: [Browser]
+    getScreenShot(url: String, browser: BrowserInput!): Job
+  }
+
+  input BrowserInput {
+    name: String!
+    version: String!
+    osName: String!
+    osVersion: String!
+  }
+  type Browser {
+    os: String,
+    osVersion: String,
+    browser: String,
+    browserVersion: String,
+  }
+  type Job {
+    job_id: String!
+  }
+`;
 
 const browserStackCredentials = {
   username: process.env.BROWSERSTACK_USERNAME,
@@ -53,7 +75,7 @@ async function takeScreenShot(url, browser) {
 
 function createLambdaServer() {
   return new ApolloServerLambda({
-    typeDefs: gql(fs.readFileSync(__dirname.concat('/schema.graphql'), 'utf8')),
+    typeDefs: typeDefs,
     resolvers,
     introspection: true,
     playground: true,
@@ -62,7 +84,7 @@ function createLambdaServer() {
 
 function createLocalServer() {
   return new ApolloServer({
-    typeDefs: gql(fs.readFileSync(__dirname.concat('/schema.graphql'), 'utf8')),
+    typeDefs: typeDefs,
     resolvers,
     introspection: true,
     playground: true,
