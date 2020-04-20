@@ -4,7 +4,7 @@
   "description": "A simple serverless GraphQL API built with TypeScript and deployed on Netlify.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp ./src/schema.graphql ./functions/bundle",
     "start": "nodemon",
     "codegen": "graphql-codegen --config codegen.yml"
   },

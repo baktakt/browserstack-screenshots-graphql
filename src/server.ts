@@ -4,8 +4,6 @@ import { ApolloServer as ApolloServerLambda } from 'apollo-server-lambda';
 import * as EnvironmentVariables from 'dotenv';
 import * as BrowserStack from 'browserstack';
 import * as fs from 'fs';
-import * as util from 'util';
-
 
 EnvironmentVariables.config({
   path: '.env'
