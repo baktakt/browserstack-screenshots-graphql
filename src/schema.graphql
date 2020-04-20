@@ -1,9 +1,6 @@
-type Mutation {
-  getScreenShot(url: String, browser: BrowserInput!): Job
-}
-
 type Query {
   browsers: [Browser]
+  getScreenShot(url: String, browser: BrowserInput!): Job
 }
 
 input BrowserInput {

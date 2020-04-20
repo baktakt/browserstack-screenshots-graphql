@@ -18,7 +18,7 @@ const browserStackCredentials = {
 
 
 const resolvers = {
-  Mutation: {
+  Query: {
     async getScreenShot(obj, { url, browser }, context, info) {
       console.log(browser);
       let screenshots = await takeScreenShot(url, browser);
@@ -50,9 +50,6 @@ async function takeScreenShot(url, browser) {
       resolve(job);
     });
   });
-
-
-
 }
 
 
