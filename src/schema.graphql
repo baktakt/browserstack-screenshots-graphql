@@ -1,0 +1,23 @@
+type Mutation {
+  getScreenShot(url: String, browser: BrowserInput!): Job
+}
+
+type Query {
+  browsers: [Browser]
+}
+
+input BrowserInput {
+  name: String!
+  version: String!
+  osName: String!
+  osVersion: String!
+}
+type Browser {
+  os: String,
+  osVersion: String,
+  browser: String,
+  browserVersion: String,
+}
+type Job {
+  job_id: String!
+}
