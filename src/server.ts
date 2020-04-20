@@ -21,7 +21,7 @@ const resolvers = {
   Query: {
     async getScreenShot(obj, { url, browser }, context, info) {
       console.log(browser);
-      let screenshots = await takeScreenShot(url, browser);
+      let screenshots:any = await takeScreenShot(url, browser);
       return { job_id: screenshots.job_id }
     }
   }
