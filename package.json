@@ -36,7 +36,7 @@
   "dependencies": {
     "@slack/web-api": "^5.8.0",
     "apollo-server": "^2.10.1",
-    "apollo-server-lambda": "^2.10.1",
+    "apollo-server-lambda": "^2.14.2",
     "browserstack": "^1.6.0",
     "dotenv": "^8.2.0",
     "wait-until": "0.0.2"
